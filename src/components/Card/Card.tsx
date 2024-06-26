@@ -1,5 +1,5 @@
 import { useRef } from "react";
-//import "./index.css";
+import "./index.css";
 const codeInputFields = new Array(4);
 
 export const Card = () => {
@@ -7,10 +7,10 @@ export const Card = () => {
   const codeChangeHandler =
     (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.value.length === 4) {
-        console.log(e.target.value);
-        cardInputRef.current[i]?.nextElementSibling
+        i < 3
           ? cardInputRef.current[i + 1]?.focus()
           : cardInputRef.current[i]?.blur();
+        console.log(i);
       }
     };
 
