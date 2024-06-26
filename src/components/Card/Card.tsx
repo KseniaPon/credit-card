@@ -10,7 +10,6 @@ export const Card = () => {
         i < 3
           ? cardInputRef.current[i + 1]?.focus()
           : cardInputRef.current[i]?.blur();
-        console.log(i);
       }
     };
 
@@ -20,20 +19,22 @@ export const Card = () => {
 
   return (
     <div className="card">
-      {codeInputFields.fill(0).map((_, i) => (
-        <input
-          className="card__number--input"
-          type="number"
-          onKeyDown={keyBoardHandler}
-          placeholder="XXXX"
-          ref={(el) => (cardInputRef.current[i] = el)}
-          name={`code-${i}`}
-          key={i}
-          maxLength={4}
-          onChange={codeChangeHandler(i)}
-        />
-      ))}
-      <div className="card__owner">Name Surname</div>
+      <h1 className="card__name">Bank card</h1>
+      <div className="card__number">
+        {codeInputFields.fill(0).map((_, i) => (
+          <input
+            className="card__number--input"
+            type="number"
+            onKeyDown={keyBoardHandler}
+            placeholder="XXXX"
+            ref={(el) => (cardInputRef.current[i] = el)}
+            name={`code-${i}`}
+            key={i}
+            maxLength={4}
+            onChange={codeChangeHandler(i)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
